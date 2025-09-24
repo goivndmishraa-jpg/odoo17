@@ -1,1 +1,1 @@
-from .property import Property
+from . import property

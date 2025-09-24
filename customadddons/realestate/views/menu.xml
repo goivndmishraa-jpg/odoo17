@@ -1,0 +1,7 @@
+<odoo>
+    <menuitem name="Property ads" id="menu_root_property_ads">
+        <menuitem id="menu_property_ads" name="ADS">
+            <menuitem id="menu_property" name="Property" action="realestate.action_property"/>
+        </menuitem>
+    </menuitem>
+</odoo>

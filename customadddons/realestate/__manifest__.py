@@ -7,7 +7,12 @@
     "version":"1.0",
     "author":"gov",
     "depends":[],
-    "data":[],
+    "data":[
+        "security/ir.model.access.csv",
+        "views/property_view.xml",
+        "views/menu.xml",
+
+    ],
     "installable":True,
     "application":True,
     "license": "LGPL-3"
