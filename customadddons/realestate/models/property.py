@@ -5,6 +5,7 @@ class Property(models.Model):
     _description="this is first model"
 
     name=fields.Char(string="Name")
+    property_type_id=fields.Many2one("estate.property.type",string="property_type")
     description=fields.Char(string="description")
     postcode=fields.Char(string="postcode")
     date_availability=fields.Date(string="available from")
@@ -18,3 +19,12 @@ class Property(models.Model):
     garden=fields.Boolean(string="garden", default=False)
     garden_area=fields.Integer(string="garden area", )
     gardern_orientation = fields.Selection([("north","north"),("south","south"),("East","East"),("West","West")],string="garden orientation")
+
+
+class Property_type(models.Model):
+    _name="estate.property.type"
+    _description="for the types of Property present"
+
+    name=fields.Char(String="Property Name")
+
+    

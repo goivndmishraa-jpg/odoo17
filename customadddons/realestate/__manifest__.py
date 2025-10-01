@@ -10,7 +10,9 @@
     "data":[
         "security/ir.model.access.csv",
         "views/property_view.xml",
-        "views/menu.xml",
+        "views/property_type_view.xml",
+        "views/menu.xml"
+        
 
     ],
     "installable":True,
