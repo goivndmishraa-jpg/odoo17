@@ -1,0 +1,21 @@
+.select-all-companies-container {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#select-all-companies-btn {
+    background-color: #714b67;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+#select-all-companies-btn:hover {
+    background-color: #8b5d7a;
+}
