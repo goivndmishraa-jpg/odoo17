@@ -21,23 +21,35 @@ patch(WebClient.prototype, {
             btn.innerText = "Select all companies";
             Object.assign(btn.style, {
                 position: "fixed",
-                top: "10px",
-                right: "180px",
+                top: "8px",           
+                right: "400px",       
                 zIndex: 9999,
-                padding: "6px 12px",
+                padding: "5px 14px",
                 background: "#875A7B",
                 color: "white",
                 border: "none",
-                borderRadius: "6px",
+                borderRadius: "8px",
+                fontSize: "13px",
+                fontWeight: "500",
                 cursor: "pointer",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                transition: "background 0.2s, transform 0.1s",
             });
+
+            btn.addEventListener("mouseenter", () => {
+                btn.style.background = "#9b6793";
+            });
+            btn.addEventListener("mouseleave", () => {
+                btn.style.background = "#875A7B";
+            });
+
             document.body.appendChild(btn);
 
             btn.addEventListener("click", () => {
                 companyMenuButton.click();
 
                 setTimeout(() => {
-                    // Select all company toggle divs instead of inputs
+                    
                     const toggles = document.querySelectorAll(".o_switch_company_menu [role='menuitemcheckbox']");
                     if (toggles.length === 0) {
                         alert("Could not find any company toggle elements — menu structure may differ.");
@@ -47,7 +59,7 @@ patch(WebClient.prototype, {
                     toggles.forEach(toggle => {
                         const isChecked = toggle.getAttribute("aria-checked") === "true";
                         if (!isChecked) {
-                            toggle.click(); // triggers the company selection
+                            toggle.click(); 
                         }
                     });
 
