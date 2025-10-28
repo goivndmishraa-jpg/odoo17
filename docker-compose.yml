@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: odoo17-db
+    restart: always
+    environment:
+      POSTGRES_DB: odoo17
+      POSTGRES_USER: odoo17
+      POSTGRES_PASSWORD: odoo17
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
