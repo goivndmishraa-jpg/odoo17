@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="property_type_firstt" model="estate.property.type">
+        <field name="name">The first property</field>
+    </record>
+    <record id="property_type_secondd" model="estate.property.type">
+        <field name="name">The second property</field>
+    </record>
+    <record id="property_type_thirdd" model="estate.property.type">
+        <field name="name">The third property</field>
+    </record>
+    <record id="property_type_fourthh" model="estate.property.type">
+        <field name="name">The fourth property</field>
+    </record>
+</odoo>

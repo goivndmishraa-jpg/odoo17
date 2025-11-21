@@ -25,6 +25,7 @@ class Property(models.Model):
     customer=fields.Many2one("res.partner", string="customer",    domain="[('is_company', '=', True)]")
     Taxid=fields.Char(string="Tax ID",related="customer.vat")
     totalarea=fields.Integer(string="total area", compute="gettotalarea",inverse="getlivingarea")
+    ramdomarea=fields.Char(string="random area")
     @api.depends('living_area','garden_area')
     def gettotalarea(self):
         for ref in self:
