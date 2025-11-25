@@ -7,7 +7,8 @@
     "depends": ["web"],
     "assets": {
         "web.assets_backend": [
-            "web_select_all_companies/static/src/js/select_all_companies.js",
+            # "web_select_all_companies/static/src/js/select_all_companies.js",
+            "web_select_all_companies/static/src/js/companySelector.js"
         ],
     },
     "installable": True,
