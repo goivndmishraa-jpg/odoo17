@@ -24,8 +24,8 @@ patch(WebClient.prototype, {
                 "Mfg Companies",
                 "Service Companies"
             ]
-            let mfgcompanies=["SHM Products Pvt. Ltd., Mumbai"];
-            let servicecompanies=['SHM Fire Safety Pvt. Ltd., Multy']
+            let mfgcompanies=["SHM Shipcare Pvt. Ltd., MFG / BOAT","SHM Shipcare Pvt. Ltd, HIRE - ONGC","SHM Shipcare Pvt. Ltd., HIRE","SHM Shipyard Pvt. Ltd.","SHM Shipcare Pvt. Ltd., SRU Mumbai"];
+            let servicecompanies=["SHM Shipcare Pvt. Ltd., MAN","SHM Shipcare Pvt. Ltd., GUJ","SHM Shipcare Pvt. Ltd., CHE","SHM Shipcare Pvt. Ltd., KOC"]
             options.forEach(val=>{
                let t=document.createElement("option")
                t.value=val
@@ -51,7 +51,9 @@ patch(WebClient.prototype, {
                 cursor: "pointer",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
                 transition: "background 0.2s, transform 0.1s",
+                
             });
+            btn.style.color="black"
 
             btn.addEventListener("mouseenter", () => {
                 btn.style.background = "#9b6793";
@@ -79,14 +81,19 @@ patch(WebClient.prototype, {
 
                     
                         if(btn.value=="All Companies"){
-                            toggles.forEach(toggle => {
-                                const isChecked = toggle.getAttribute("aria-checked") === "true";
-                                if (!isChecked) {
-                                    toggle.click(); 
-                                }
-                            });
+                            
+                                toggles.forEach(toggle => {
+                                    const isChecked = toggle.getAttribute("aria-checked") === "true";
+                                    if (!isChecked) {
+                                        toggle.click(); 
+                                    }
+                                });
+                                
+                                
+                            
                         }else if(btn.value=="Mfg Companies"){
                             mfgcompanies.map(individualcompany=>{
+                                console.log(individualcompany)
                                 toggles.forEach(toggledata=>{
                                     
                                         if (toggledata.getAttribute("aria-label")==individualcompany){
@@ -104,11 +111,20 @@ patch(WebClient.prototype, {
                                 })
                             })
                             console.log("hi")
-                        }else if(btn.value=="Service Companies"){
-                            servicecompanies.map(company=>{
-                                toggles.forEach(toggledata=>{
+                        } else if(btn.value == "Service Companies") {
+
+                            
+                            toggles.forEach(t => {
+                                if (t.getAttribute("aria-checked") == "true") {
+                                    t.click();
+                                }
+                            });
+
+                           
+                            servicecompanies.forEach(companyName => {
+                               toggles.forEach(toggledata=>{
                                     
-                                        if (toggledata.getAttribute("aria-label")==company){
+                                        if (toggledata.getAttribute("aria-label")==companyName){
                                             const isChecked= toggledata.getAttribute("aria-checked")=="true";
                                             if(!isChecked){
                                                 toggledata.click();
@@ -121,9 +137,9 @@ patch(WebClient.prototype, {
                                         console.log(toggledata, "c")
                                         }
                                 })
-                            })
-                            console.log("hii")
+                            });
                         }
+
                         
                     
 

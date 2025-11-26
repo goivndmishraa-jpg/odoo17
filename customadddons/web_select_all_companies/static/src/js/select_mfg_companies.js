@@ -41,7 +41,7 @@ patch (WebClient.prototype,{
                         alert("could not find any company ");
                         return;
                     }
-                    let mfgcompany=["SHM Products Pvt. Ltd., Mumbai"]
+                    let mfgcompany=["SHM Products Pvt Ltd., Mumbai"]
                     mfgcompany.map(individualcompany=>{
                             toggle.forEach(toggledata=>{
                             
