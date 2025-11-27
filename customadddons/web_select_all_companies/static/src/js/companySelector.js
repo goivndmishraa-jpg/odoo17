@@ -118,10 +118,10 @@ patch(WebClient.prototype, {
                                 const shouldBeChecked = companySet.has(label);
 
                                 if (shouldBeChecked && !isChecked) {
-                                    toggle.click();          // select it
+                                    toggle.click();          
                                 } 
                                 else if (!shouldBeChecked && isChecked) {
-                                    toggle.click();          // unselect it
+                                    toggle.click();         
                                 }
                             });
 
