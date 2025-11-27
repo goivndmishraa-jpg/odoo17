@@ -19,13 +19,13 @@ patch(WebClient.prototype, {
             const btn = document.createElement("select");
             btn.id = "selectAllCompaniesButton";
             let options=[
-                "select",
+                "select Companies",
                 "All Companies",
                 "Mfg Companies",
-                "Service Companies"
+                "Service/store Companies"
             ]
-            let mfgcompanies=["SHM Shipcare Pvt. Ltd., MFG / BOAT","SHM Shipcare Pvt. Ltd, HIRE - ONGC","SHM Shipcare Pvt. Ltd., HIRE","SHM Shipyard Pvt. Ltd.","SHM Shipcare Pvt. Ltd., SRU Mumbai"];
-            let servicecompanies=["SHM Shipcare Pvt. Ltd., MAN","SHM Shipcare Pvt. Ltd., GUJ","SHM Shipcare Pvt. Ltd., CHE","SHM Shipcare Pvt. Ltd., KOC"]
+            let mfgcompanies=["SHM Shipcare Pvt. Ltd., MFG / BOAT","SHM Shipyard Pvt. Ltd.","SHM Shipcare Pvt. Ltd., SRU Mumbai","SHM Products Pvt Ltd., Mumbai","SHM Products Pvt. Ltd., Chennai","SHM Shipcare Pvt. Ltd., PRD","SHM Shipcare Pvt. Ltd., LRD","SHM Shipcare Pvt. Ltd., ONGC / LBD","SHM Shipcare Pvt. Ltd., BAS"];
+            let servicecompanies=["SHM Fire Safety Pte. Ltd.","SHM Fire Safety Pvt Ltd., Multy","SHM Shipcare Pvt. Ltd., MTA","The SHM Store(Shipcare), Kolkata DES","SHM Shipcare Pvt. Ltd., FSD","SHM Shipcare Pvt. Ltd., LSA","SHM Shipcare Pvt. Ltd, HIRE - ONGC","SHM Shipcare Pvt. Ltd., HIRE","SHM Shipcare Pvt. Ltd., MSD","SHM Shipcare Pvt. Ltd., PRJ","SHM Shipcare Pvt. Ltd., VZG","SHM Shipcare Pvt. Ltd., PTB","SHM Shipcare Pvt. Ltd., KOL","SHM Shipcare Pvt. Ltd., KOC","SHM Shipcare Pvt. Ltd., CHE","SHM Shipcare Pvt. Ltd., GUJ","SHM Shipcare Pvt. Ltd., MAN","The SHM Store, Kolkata DES","The SHM Store, Chennai","The SHM Store, Kochi","The SHM Store, Kolkata","The SHM Store, Mumbai","The SHM Store, Port Blair","The SHM Store, Visakhapatnam","SHM Shipcare Pvt Ltd., CRP",]
             options.forEach(val=>{
                let t=document.createElement("option")
                t.value=val
@@ -63,9 +63,9 @@ patch(WebClient.prototype, {
             });
 
             document.body.appendChild(btn);
-            let patchh="select"
+            
             btn.addEventListener("click", () => {
-                if(patchh==btn.value){
+                if("select Companies"==btn.value){
                     return;
                 }
                 companyMenuButton.click();
@@ -92,52 +92,39 @@ patch(WebClient.prototype, {
                                 
                             
                         }else if(btn.value=="Mfg Companies"){
-                            mfgcompanies.map(individualcompany=>{
-                                console.log(individualcompany)
-                                toggles.forEach(toggledata=>{
-                                    
-                                        if (toggledata.getAttribute("aria-label")==individualcompany){
-                                            const isChecked= toggledata.getAttribute("aria-checked")=="true";
-                                            if(!isChecked){
-                                                toggledata.click();
-                                            }
-                                        }else{
-                                            console.log(toggledata);
-                                        if(toggledata.getAttribute("aria-checked")=="true"){
-                                            toggledata.click()
-                                        }
-                                        console.log(toggledata, "c")
-                                        }
-                                })
-                            })
-                            console.log("hi")
-                        } else if(btn.value == "Service Companies") {
+                           const companySet = new Set(mfgcompanies);
 
-                            
-                            toggles.forEach(t => {
-                                if (t.getAttribute("aria-checked") == "true") {
-                                    t.click();
+                            toggles.forEach(toggle => {
+                                const label = toggle.getAttribute("aria-label");
+                                const isChecked = toggle.getAttribute("aria-checked") === "true";
+                                const shouldBeChecked = companySet.has(label);
+
+                                if (shouldBeChecked && !isChecked) {
+                                    toggle.click();          
+                                } 
+                                else if (!shouldBeChecked && isChecked) {
+                                    toggle.click();          
+                                }
+                            });
+                           
+                        } else if(btn.value == "Service/store Companies") {
+
+                       
+                            const companySet = new Set(servicecompanies);
+
+                            toggles.forEach(toggle => {
+                                const label = toggle.getAttribute("aria-label");
+                                const isChecked = toggle.getAttribute("aria-checked") === "true";
+                                const shouldBeChecked = companySet.has(label);
+
+                                if (shouldBeChecked && !isChecked) {
+                                    toggle.click();          // select it
+                                } 
+                                else if (!shouldBeChecked && isChecked) {
+                                    toggle.click();          // unselect it
                                 }
                             });
 
-                           
-                            servicecompanies.forEach(companyName => {
-                               toggles.forEach(toggledata=>{
-                                    
-                                        if (toggledata.getAttribute("aria-label")==companyName){
-                                            const isChecked= toggledata.getAttribute("aria-checked")=="true";
-                                            if(!isChecked){
-                                                toggledata.click();
-                                            }
-                                        }else{
-                                            console.log(toggledata);
-                                        if(toggledata.getAttribute("aria-checked")=="true"){
-                                            toggledata.click()
-                                        }
-                                        console.log(toggledata, "c")
-                                        }
-                                })
-                            });
                         }
 
                         
